@@ -321,7 +321,7 @@ static NSString *const MessageHanderName = @"ReactNative";
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
   // Override the statusbar tap event.
-  if (_statusBarTapEnabled {
+  if (_statusBarTapEnabled) {
     NSMutableDictionary<NSString *, id> *event = [self baseEvent];
     _onStatusBarTap(event);
     return NO;

@@ -233,6 +233,11 @@ export type IOSWebViewProps = $ReadOnly<{|
    * The custom user agent string.
    */
   userAgent?: ?string,
+  /**
+   * A function that lets you override scroll-to-top behavior when the status
+   * bar is tapped.
+   */
+  onStatusBarTap?: (event: WebViewMessageEvent) => mixed,
 |}>;
 
 export type AndroidWebViewProps = $ReadOnly<{|

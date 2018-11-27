@@ -53,6 +53,12 @@ RCT_EXPORT_VIEW_PROPERTY(userAgent, NSString)
 RCT_EXPORT_VIEW_PROPERTY(messagingEnabled, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(onMessage, RCTDirectEventBlock)
 
+/**
+ * Expose methods to enable overriding the status bar tap event.
+ */
+RCT_EXPORT_VIEW_PROPERTY(statusBarTapEnabled, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(onStatusBarTap, RCTDirectEventBlock)
+
 RCT_EXPORT_METHOD(postMessage:(nonnull NSNumber *)reactTag message:(NSString *)message)
 {
   [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, RNCWKWebView *> *viewRegistry) {

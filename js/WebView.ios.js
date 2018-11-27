@@ -251,6 +251,7 @@ class WebView extends React.Component<WebViewSharedProps, State> {
     }
 
     const messagingEnabled = typeof this.props.onMessage === 'function';
+    const statusBarTapEnabled = typeof this.props.onStatusBarTap === 'function';
 
     let NativeWebView = nativeConfig.component;
 
@@ -284,6 +285,8 @@ class WebView extends React.Component<WebViewSharedProps, State> {
         onLoadingProgress={this._onLoadingProgress}
         messagingEnabled={messagingEnabled}
         onMessage={this._onMessage}
+        statusBarTapEnabled={statusBarTapEnabled}
+        onStatusBarTap={this._onStatusBarTap}
         onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
         scalesPageToFit={scalesPageToFit}
         allowsInlineMediaPlayback={this.props.allowsInlineMediaPlayback}
@@ -438,6 +441,11 @@ class WebView extends React.Component<WebViewSharedProps, State> {
   _onMessage = (event: WebViewMessageEvent) => {
     const { onMessage } = this.props;
     onMessage && onMessage(event);
+  };
+
+  _onStatusBarTap = (event: WebViewMessageEvent) => {
+    const { onStatusBarTap } = this.props;
+    onStatusBarTap && onStatusBarTap(event);
   };
 
   _onLoadingProgress = (event: WebViewProgressEvent) => {

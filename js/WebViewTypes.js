@@ -241,7 +241,6 @@ export type IOSWebViewProps = $ReadOnly<{|
    * The custom user agent string.
    */
   userAgent?: ?string,
-
   /**
    * A Boolean value that determines whether pressing on a link
    * displays a preview of the destination for the link.
@@ -251,6 +250,11 @@ export type IOSWebViewProps = $ReadOnly<{|
    * @platform ios
    */
   allowsLinkPreview?: ?boolean,
+  /**
+   * A function that lets you override scroll-to-top behavior when the status
+   * bar is tapped.
+   */
+  onStatusBarTap?: (event: WebViewMessageEvent) => mixed,
 |}>;
 
 export type AndroidWebViewProps = $ReadOnly<{|

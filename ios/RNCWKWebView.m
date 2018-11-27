@@ -31,6 +31,7 @@ static NSString *const MessageHanderName = @"ReactNative";
 @property (nonatomic, copy) RCTDirectEventBlock onLoadingProgress;
 @property (nonatomic, copy) RCTDirectEventBlock onShouldStartLoadWithRequest;
 @property (nonatomic, copy) RCTDirectEventBlock onMessage;
+@property (nonatomic, copy) RCTDirectEventBlock onStatusBarTap;
 @property (nonatomic, copy) WKWebView *webView;
 @end
 
@@ -318,6 +319,18 @@ static NSString *const MessageHanderName = @"ReactNative";
 {
   // Don't allow scrolling the scrollView.
   scrollView.bounds = _webView.bounds;
+}
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
+{
+  // Override the statusbar tap event.
+  if (_statusBarTapEnabled {
+    NSMutableDictionary<NSString *, id> *event = [self baseEvent];
+    _onStatusBarTap(event);
+    return NO;
+  } else {
+    return YES;
+  }
 }
 
 - (void)postMessage:(NSString *)message

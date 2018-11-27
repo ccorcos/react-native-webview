@@ -17,6 +17,7 @@ This document lays out the current public properties and methods for the React N
 - [`onLoadStart`](Reference.md#onloadstart)
 - [`onLoadProgress`](Reference.md#onloadprogress)
 - [`onMessage`](Reference.md#onmessage)
+- [`onStatusBarTap`](Reference.md#onstatusbartap)
 - [`onNavigationStateChange`](Reference.md#onnavigationstatechange)
 - [`originWhitelist`](Reference.md#originwhitelist)
 - [`renderError`](Reference.md#rendererror)
@@ -200,6 +201,17 @@ A function that is invoked when the webview calls `window.postMessage`. Setting 
 | Type     | Required |
 | -------- | -------- |
 | function | No       |
+
+---
+
+
+### `onStatusBarTap`
+
+This function is invoked whenever the status bar it tapped. Including this callback will override the default scroll-to-top behavior.
+
+| Type     | Required | Platform |
+| -------- | -------- | -------- |
+| function | No       | iOS      |
 
 ---
 

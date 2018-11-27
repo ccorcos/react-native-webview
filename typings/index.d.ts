@@ -227,6 +227,12 @@ export interface IOSWebViewProps {
    * @platform ios
    */
   allowsLinkPreview?: boolean;
+
+  /**
+   * A function that lets you override scroll-to-top behavior when the status
+   * bar is tapped.
+   */
+  onStatusBarTap?: (event: WebViewMessageEvent) => any,
 }
 
 export interface AndroidWebViewProps {

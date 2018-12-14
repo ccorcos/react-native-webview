@@ -272,6 +272,12 @@ export interface IOSWebViewProps {
 		event: WebViewUrlSchemeRequest
 	) =>
 		 Promise<UrlSchemeResponse | UrlSchemeRedirect | UrlSchemeFile>;
+
+  /**
+   * This function will override the default UIScrollView behavior and let you handle StatusBar
+   * tap events.
+   */
+  onStatusBarTap?: () => void,
 }
 
 export interface AndroidWebViewProps {

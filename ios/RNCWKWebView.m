@@ -33,6 +33,7 @@ static NSString *const MessageHanderName = @"ReactNative";
 @property (nonatomic, copy) RCTDirectEventBlock onShouldStartLoadWithRequest;
 @property (nonatomic, copy) RCTDirectEventBlock onUrlSchemeRequest;
 @property (nonatomic, copy) RCTDirectEventBlock onMessage;
+@property (nonatomic, copy) RCTDirectEventBlock onStatusBarTap;
 @property (nonatomic, copy) WKWebView *webView;
 @end
 
@@ -107,7 +108,7 @@ static NSString *const MessageHanderName = @"ReactNative";
 #else
     wkWebViewConfig.mediaPlaybackRequiresUserAction = _mediaPlaybackRequiresUserAction;
 #endif
-    
+
     if (_urlScheme) {
       self.schemeHandler = [[RNCWKSchemeHandler alloc] init];
       [wkWebViewConfig setURLSchemeHandler:self.schemeHandler forURLScheme:_urlScheme];
@@ -128,7 +129,7 @@ static NSString *const MessageHanderName = @"ReactNative";
     if (_userAgent) {
       _webView.customUserAgent = _userAgent;
     }
-    
+
 #if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000 /* __IPHONE_11_0 */
     if ([_webView.scrollView respondsToSelector:@selector(setContentInsetAdjustmentBehavior:)]) {
       _webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -560,7 +561,6 @@ static NSString *const MessageHanderName = @"ReactNative";
   _onUrlSchemeRequest(req);
 }
 
-
 // Receive event to React Native.
 - (void)handleUrlSchemeResponse:(NSDictionary *)resp
 {
@@ -568,6 +568,17 @@ static NSString *const MessageHanderName = @"ReactNative";
     [self.schemeHandler handleUrlSchemeResponse:resp];
   } else {
     RCTLogError(@"Calling handleUrlSchemeResponse without a scheme handler.");
+  }
+}
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+  if (_overrideScrollTop) {
+    if (_onStatusBarTap != nil) {
+      _onStatusBarTap(@{});
+    }
+    return FALSE;
+  } else {
+    return TRUE;
   }
 }
 

@@ -52,6 +52,9 @@ RCT_EXPORT_VIEW_PROPERTY(userAgent, NSString)
 RCT_EXPORT_VIEW_PROPERTY(urlScheme, NSString)
 RCT_EXPORT_VIEW_PROPERTY(allowsLinkPreview, BOOL)
 
+RCT_EXPORT_VIEW_PROPERTY(overrideScrollTop, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(onStatusBarTap, RCTDirectEventBlock)
+
 /**
  * Expose methods to enable messaging the webview.
  */

@@ -299,6 +299,11 @@ export type IOSWebViewProps = $ReadOnly<{|
 	) =>
 		Promise<UrlSchemeResponse | UrlSchemeRedirect | UrlSchemeFile>,
 
+  /**
+   * This function will override the default UIScrollView behavior and let you handle StatusBar
+   * tap events.
+   */
+  onStatusBarTap?: () => mixed,
 |}>;
 
 export type AndroidWebViewProps = $ReadOnly<{|

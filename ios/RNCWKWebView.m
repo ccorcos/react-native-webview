@@ -31,6 +31,7 @@ static NSString *const MessageHanderName = @"ReactNative";
 @property (nonatomic, copy) RCTDirectEventBlock onLoadingProgress;
 @property (nonatomic, copy) RCTDirectEventBlock onShouldStartLoadWithRequest;
 @property (nonatomic, copy) RCTDirectEventBlock onMessage;
+@property (nonatomic, copy) RCTDirectEventBlock onStatusBarTap;
 @property (nonatomic, copy) WKWebView *webView;
 @end
 
@@ -524,4 +525,16 @@ static NSString *const MessageHanderName = @"ReactNative";
   _bounces = bounces;
   _webView.scrollView.bounces = bounces;
 }
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
+  if (_overrideScrollTop) {
+    if (_onStatusBarTap != nil) {
+      _onStatusBarTap(@{});
+    }
+    return FALSE;
+  } else {
+    return TRUE;
+  }
+}
+
 @end

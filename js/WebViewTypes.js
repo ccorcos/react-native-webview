@@ -246,6 +246,12 @@ export type IOSWebViewProps = $ReadOnly<{|
    * @platform ios
    */
   allowsLinkPreview?: ?boolean,
+
+  /**
+   * This function will override the default UIScrollView behavior and let you handle StatusBar
+   * tap events.
+   */
+  onStatusBarTap?: () => mixed,
 |}>;
 
 export type AndroidWebViewProps = $ReadOnly<{|

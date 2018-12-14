@@ -48,6 +48,7 @@ This document lays out the current public properties and methods for the React N
 - [`saveFormDataDisabled`](Reference.md#saveFormDataDisabled)
 - [`pagingEnabled`](Reference.md#pagingEnabled)
 - [`allowsLinkPreview`](Reference.md#allowsLinkPreview)
+- [`onStatusBarTap`](Reference.md#onStatusBarTap)
 
 ## Methods Index
 
@@ -538,6 +539,14 @@ A Boolean value that determines whether pressing on a link displays a preview of
 | Type    | Required | Platform |
 | ------- | -------- | -------- |
 | boolean | No       | iOS      |
+
+### `onStatusBarTap`
+
+This function will override the default UIScrollView behavior and let you handle StatusBar tap events.
+
+| Type     | Required | Platform |
+| -------- | -------- | -------- |
+| function | No       | iOS      |
 
 ## Methods
 

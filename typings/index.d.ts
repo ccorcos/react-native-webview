@@ -227,6 +227,12 @@ export interface IOSWebViewProps {
    * @platform ios
    */
   allowsLinkPreview?: boolean;
+
+  /**
+   * This function will override the default UIScrollView behavior and let you handle StatusBar
+   * tap events.
+   */
+  onStatusBarTap?: () => void,
 }
 
 export interface AndroidWebViewProps {
